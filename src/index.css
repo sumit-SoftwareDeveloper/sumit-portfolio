@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f3f2eb; /* = video ke neeche wali strip ka exact color */
+  --bg-soft: #f2efe9;
+  --surface: #f1eee8;
+  --text: #1c1c1e;
+  --muted: #55524d;
+  --line: #d9d4cb;
+  --accent: #d4473a;
+  --accent-soft: #ec8b7e;
+  --dark: #1a1a1a;
+  --red: #c0392b;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', 'Bodoni Moda', Georgia, serif;
+  --font-serif: 'Bodoni Moda', 'Didot', 'Bodoni MT', 'Times New Roman', serif;
+
+  --shadow-card: 0 2px 0 rgba(255,255,255,.9) inset, 0 22px 34px -10px rgba(100, 88, 70, 0.34), 0 4px 10px rgba(100, 88, 70, 0.14);
+  --shadow-soft: 0 8px 22px rgba(120, 108, 90, 0.14);
+
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, p { margin: 0; overflow-wrap: break-word; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+img, video, svg { display: block; max-width: 100%; }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* window-light streaks (video wali diagonal roshni) poore page pe halki si */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  z-index: 60;
+  pointer-events: none;
+  filter: blur(14px);
+  mix-blend-mode: multiply;
+  background:
+    linear-gradient(112deg, transparent 36%, rgba(120,105,85,.07) 36%, rgba(120,105,85,.07) 47%, transparent 47%),
+    linear-gradient(112deg, transparent 60%, rgba(120,105,85,.055) 60%, rgba(120,105,85,.055) 65%, transparent 65%),
+    linear-gradient(112deg, transparent 80%, rgba(120,105,85,.05) 80%, rgba(120,105,85,.05) 90%, transparent 90%);
+}

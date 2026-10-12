@@ -1,0 +1,63 @@
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #e8e3db;
+}
+
+.intro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* video ke neeche ka hissa smoothly portfolio ke background color me mil jaye */
+.intro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 88%, var(--bg) 100%);
+}
+
+.intro-hotspot {
+  position: absolute;
+  z-index: 3;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.intro-hotspot:hover { background: rgba(28, 28, 30, 0.06); }
+
+.intro-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #ebe7df;
+  text-align: center;
+  padding: 0 6%;
+}
+.intro-fallback h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 8vw, 104px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.intro-fallback span { width: 150px; height: 3px; background: var(--red); }
+.intro-fallback p { color: #66625b; font-weight: 500; letter-spacing: 0.04em; }
+.intro-fallback small { color: #9a958c; }
+
+/* Phone / portrait: poora 16:9 video frame dikhao (crop nahi), neeche seedha portfolio shuru */
+@media (max-aspect-ratio: 11/10) {
+  .intro { height: auto; aspect-ratio: 16 / 9; }
+}
